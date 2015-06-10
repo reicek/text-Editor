@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Platzi Text</title>
+<style>
+
+  body {
+    font-size: 11px;
+  }
+  
+  small {
+    display: block;
+    margin-top: 40px;
+    font-size: 9px;
+  }
+  
+  small,
+  small a {
+    color: #666;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  #toolbar [data-wysihtml5-action] {
+    float: right;
+  }
+  
+  #toolbar,
+  textarea {
+    width: 920px;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    height: 280px;
+    border: 2px solid green;
+    font-family: Verdana;
+    font-size: 11px;
+  }
+  
+  textarea:focus {
+    color: black;
+    border: 2px solid black;
+  }
+  
+  .wysihtml5-command-active, .wysihtml5-action-active {
+    font-weight: bold;
+  }
+  
+  [data-wysihtml5-dialog] {
+    margin: 5px 0 0;
+    padding: 5px;
+    border: 1px solid #666;
+  }
+  
+  
+  
+  a[data-wysihtml5-command-value="red"] {
+    color: red;
+  }
+  
+  a[data-wysihtml5-command-value="green"] {
+    color: green;
+  }
+  
+  a[data-wysihtml5-command-value="blue"] {
+    color: blue;
+  }
+  
+  .wysihtml5-editor, .wysihtml5-editor table td {
+    outline: 1px dotted #abc;
+    
+  }
+  
+  code {
+    background: #ddd;
+    padding: 10px;
+    white-space: pre;
+    display: block;
+    margin: 1em 0;
+  }
+  
+  .toolbar {
+    display: block;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    margin-bottom: 9px;
+    line-height: 1em;
+  }
+  .toolbar a {
+    display: inline-block;
+    height: 1.5em;
+    border-radius: 3px;
+    font-size: 9px;
+    line-height: 1.5em;
+    text-decoration: none;
+    background: #e1e1e1;
+    border: 1px solid #ddd;
+    padding: 0 0.2em;
+    margin: 1px 0;
+  }
+  .toolbar a.wysihtml5-command-active, .toolbar .wysihtml5-action-active {
+    background: #222;
+    color: white;
+  }
+  .toolbar .block { 
+    padding: 1px 1px;
+    display: inline-block;
+    background: #eee;
+    border-radius: 3px;
+    margin: 0px 1px 1px 0;
+  }
+  
+  div[data-wysihtml5-dialog="createTable"] {
+    position: absolute;
+    background: white;
+  }
+  
+  div[data-wysihtml5-dialog="createTable"] td {
+    width: 10px; height: 5px;
+    border: 1px solid #666;
+  }
+  
+  .wysihtml5-editor table td.wysiwyg-tmp-selected-cell {
+    outline: 2px solid green;
+  }
+  
+  .editor-container-tag {
+    padding: 5px 10px;
+    position: absolute;
+    color: white;
+    background: rgba(0,0,0,0.8);
+    width: 100px;
+    margin-left: -50px;
+    -webkit-transition: 0.1s left, 0.1s top;
+  }
+  
+  .wrap {
+    max-width: 700px;
+    margin: 40px;
+  }
+  
+  .editable .wysihtml5-uneditable-container {
+    outline: 1px dotted gray;
+    position: relative;
+  }
+  .editable .wysihtml5-uneditable-container-right {
+    float: right;
+    width: 50%;
+    margin-left: 2em;
+    margin-bottom: 1em;
+  }
+  
+  .editable .wysihtml5-uneditable-container-left {
+    float: left;
+    width: 50%;
+    margin-right: 2em;
+    margin-bottom: 1em;
+  }
+
+</style>
+</head>
+<body onload="prettyPrint()">
+<div class="ewrapper" contentEditable="false">
+	<div class="toolbar" style="display: none;">
+		<div class="block">
+			<a data-wysihtml5-command="bold" title="CTRL+B">
+				<strong>B</strong>
+			</a>
+			<a data-wysihtml5-command="italic" title="CTRL+I">
+				<i>i</i>
+			</a>
+			<a data-wysihtml5-command="underline" title="CTRL+U">
+				<u>U</u>
+			</a>
+			<a data-wysihtml5-command="createLink">
+				link
+			</a>
+			<a data-wysihtml5-command="removeLink">
+				<s>link</s>
+			</a>
+			<a data-wysihtml5-command="insertImage">
+				Insertar <strong>Imágen</strong>
+			</a>
+			<a data-wysihtml5-command="formatCode" data-wysihtml5-command-value="language-html">
+				Mostrar como <strong>Código</strong>
+			</a>
+			<a data-wysihtml5-action="change_view">
+				Editar <strong>HTML</strong>
+			</a>
+			<a data-wysihtml5-command="undo">
+				Hacer
+			</a>
+			<a data-wysihtml5-command="redo">
+				Deshacer
+			</a>
+			<div data-wysihtml5-dialog="createLink" style="display: none;">
+				<label>
+					Link:
+					<input data-wysihtml5-dialog-field="href" value="http://">
+				</label>
+				<a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancelar</a>
+			</div>
+			<div data-wysihtml5-dialog="insertImage" style="display: none;">
+				<label>
+					Imágen:
+					<input data-wysihtml5-dialog-field="src" value="http://">
+				</label>
+				<label>
+					Alinear:
+					<select data-wysihtml5-dialog-field="className">
+						<option value="">Default</option>
+						<option value="wysiwyg-float-left">Izquierda</option>
+						<option value="wysiwyg-float-right">Derecha</option>
+					</select>
+				</label>
+				<a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancelar</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="editable" data-placeholder="...">
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link   href="prettify/prettify.css" type="text/css" rel="stylesheet" />
+<script src="prettify/prettify.js"></script>
+<script src="wysihtml/dist/wysihtml-toolbar.js"></script>
+<script src="wysihtml/parser_rules/advanced_and_extended.js"></script>
+
+<script>
+"use strict"
+var editors = [];
+
+$('.ewrapper').each(function(idx, wrapper) {
+	var e = new wysihtml5.Editor($(wrapper).find('.editable').get(0), {
+		toolbar				: $(wrapper).find('.toolbar').get(0),
+		parserRules			: wysihtml5ParserRules,
+		pasteParserRulesets	: wysihtml5ParserPasteRulesets
+		//showToolbarAfterInit: false
+	});
+	editors.push(e);
+	e.on("showSource", function() {
+		alert(e.getValue(true));
+	});
+});
+$( ".target" ).change(function() {
+  alert( "Handler for .change() called." );
+});
+</script>
+</body>
